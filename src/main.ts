@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import './style.css';
 
-import { mesh, animateMesh } from './basics/01_box';
+import { mesh } from './basics/01_plane';
 
 const app = document.querySelector('#app');
 
@@ -15,15 +15,13 @@ const controls = new OrbitControls(camera, renderer.domElement);
 camera.position.set(0, 0, 5);
 camera.lookAt(mesh.position);
 
-controls.update();
-
 renderer.setSize(innerWidth, innerHeight);
 app?.appendChild(renderer.domElement);
 
 scene.add(mesh);
 
 function animate() {
-  animateMesh();
+  controls.update();
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
 }
